@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Menú de Scripts de JavaScript</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="index.css"><br><br>
+    <h1>Menú de Scripts con JavaScript </h1><br><br>
+    <label for="scripts">
+        <h2>Selecciona un script:</h2>
+    </label><br>
+    <select class="selector" id="scripts">
+        <option value="index1.js">Script 1</option>
+        <option value="index2.js">Script 2</option>
+        <option value="index3.js">Script 3</option>
+        <option value="index4.js">Script 4</option>
+        <option value="index5.js">Script 5</option>
+    </select> <br>
+    <button class="boton" onclick="ejecutarScript()">Ejecutar</button>
+
+    <script>
+        function ejecutarScript() {
+            const script = document.getElementById("scripts").value;
+            switch (script) {
+                case "index1.js":
+                    let num_1;
+                    let num_2;
+                    let num_3;
+                    num_1 = prompt("Ingrese el primer numero");
+                    num_2 = prompt("Ingrese el segundo numero");
+                    num_3 = prompt("Ingrese el tercer numero");
+                    document.write(`El primer numero ingresado es ${num_1}. <br>`);
+                    document.write(`El segundo numero ingresado es ${num_2} <br>`);
+                    document.write(`El tercer numero ingresado es ${num_3} <br>`);
+
+                    if ((num_1 > num_2) && (num_1 > num_3)) {
+                        document.write(`El numero mayor es ${num_1} <br>`);
+                        document.write(`El numero menor es ${num_3} <br>`);
+                    }
+                    else {
+                        if ((num_2 > num_1) && (num_2 > num_3)) {
+                            document.write(`El numero mayor es ${num_2} <br>`);
+                            document.write(`El numero menor es ${num_3} <br>`);
+                        }
+                        else {
+                            document.write(`El numero mayor es ${num_3} <br>`);
+
+                        }
+                    }
+                    if (num_1 === num_2 || num_1 === num_3 || num_2 === num_3 || num_1 < 0 || num_2 < 0 || num_3 < 0) {
+                        alert("Los números deben ser distintos y positivos");
+                    }
+                    break;
+                case "index2.js":
+                    var n1 = prompt("Escribe un número");
+                    var i;
+                    var primer = true;
+                    for (i = 2; i < n1 / 2; i++) {
+                        if (n1 % i === 0) {
+                            primer = false;
+                        }
+                    }
+                    if (primer) {
+                        document.write("El numero" + n1 + " es numero primo");
+                    } else {
+                        document.write("El numero" + n1 + " no es numero primo");
+                    }
+                    break;
+                case "index3.js":
+                    let peso;
+                    let altura;
+                    let imc = 0;
+                    peso = prompt("Ingrese su peso");
+                    altura = prompt("Ingrese su altura");
+                    imc = (peso / Math.pow(altura, 2));
+                    imc = Math.round(imc, 2);
+                    if (imc < 16) {
+                        document.write(`Usted tiene criterio de ingreso ${imc}`);
+                    }
+                    if (imc > 16 && imc <= 16.9) {
+                        document.write(`Usted tiene infra peso ${imc} `);
+                    }
+                    if (imc > 17 && imc <= 18.4) {
+                        document.write(`Usted tiene bajo peso ${imc}`);
+                    }
+                    if (imc > 18.5 && imc <= 24.9) {
+                        document.write(`Usted tiene peso normal ${imc}`);
+                    }
+                    if (imc > 25 && imc <= 29.9) {
+                        document.write(`Usted tiene sobrepeso ${imc} obesidad nivel 1`);
+                    }
+                    if (imc > 30 && imc <= 34.9) {
+                        document.write(`Usted tiene obesidad premórbida ${imc} obecidad nivel 2`);
+                    }
+                    if (imc > 40 && imc <= 45) {
+                        document.write(`Usted tiene obesidad mórbida ${imc} obecidad nivel 3`);
+                    }
+                    if (imc > 45) {
+                        document.write(`Usted tiene obesidad hipermórbida ${imc} obecidad nivel 4`);
+                    }
+
+                    break;
+                case "index4.js":
+                    let palabra;
+                    palabra = prompt('Ingrese culaquiera de estas palabras (casa, mesa, perro, gato) para traducirlas al ingles');
+                    switch (palabra) {
+                        case 'casa':
+                            document.write('La traduccion de la palabra seleccionada es: house');
+                            break;
+                        case 'mesa':
+                            document.write('La traduccion de la palabra seleccionada es: table');
+                            break;
+                        case 'perro':
+                            document.write('La traduccion de la palabra seleccionada es: dog');
+                            break;
+                        case 'gato':
+                            document.write('La traduccion de la palabra seleccionada es: cat');
+                            break;
+                        default:
+                            document.write('Solo puedes traducir las palabras (casa, mesa, perro, gato)');
+                    }
+                    break;
+                case "index5.js":
+                    let cantidad_1 = 0;
+                    let cantidad_2 = 0;
+                    let cantidad_3 = 0;
+                    for (let f = 1; f <= 4; f++) {
+                        let lado1 = parseInt(prompt('Ingrese primer lado:'));
+                        let lado2 = parseInt(prompt('Ingrese segundo lado:'));
+                        let lado3 = parseInt(prompt('Ingrese tercer lado:'));
+                        if (lado1 == lado2 && lado1 == lado3) {
+                            document.write('Triángulo Equilatero.<br>');
+                            cantidad_1++;
+                        } else {
+                            if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) {
+                                document.write('Triángulo Escaleno.<br>');
+                                cantidad_2++;
+                            } else {
+                                document.write('Triángulo Isósceles.<br>');
+                                cantidad_3++;
+                            }
+                        }
+                    }
+                    document.write('<br>');
+                    document.write('Triángulos Equiláteros ingrsados:' + cantidad_1 + '<br>');
+                    document.write('Triángulos Escalenos ingresados:' + cantidad_2 + '<br>');
+                    document.write('Triángulos Isósceles ingresados:' + cantidad_3 + '<br>');
+                    if (cantidad_1 < cantidad_2 && cantidad_1 < cantidad_3) {
+                        document.write('Se ingresaron menos triángulos Equiláteros');
+                    } else {
+                        if (cantidad_2 < cantidad_3) {
+                            document.write('Se ingresaron menos triángulos Escalenos');
+                        } else {
+                            document.write('Se ingresaron menos triángulos Isósceles');
+                        }
+                    }
+
+                    break;
+                default:
+                    alert("Selecciona un script válido.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
